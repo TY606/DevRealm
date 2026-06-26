@@ -13,33 +13,7 @@ import Profile from '@/pages/Profile';
 import Admin from '@/pages/Admin';
 
 function App() {
-  const { login, isAuthenticated, role } = useAuthStore();
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const savedUser = localStorage.getItem('devrealm_user');
-    const savedToken = localStorage.getItem('devrealm_token');
-    
-    if (savedUser && savedToken) {
-      try {
-        const userData = JSON.parse(savedUser);
-        login(userData, savedToken);
-      } catch {
-        localStorage.removeItem('devrealm_user');
-        localStorage.removeItem('devrealm_token');
-      }
-    }
-    
-    setLoading(false);
-  }, [login]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin" />
-      </div>
-    );
-  }
+  const { isAuthenticated, role } = useAuthStore();
 
   return (
     <HashRouter>

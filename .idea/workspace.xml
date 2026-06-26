@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10beb0f4-b4e6-4e74-8489-7b6b0dd7b68a" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/dist/assets/index-B1e1V5Av.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Publish.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Publish.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/index.ts" afterDir="false" />
-    </list>
+    <list default="true" id="10beb0f4-b4e6-4e74-8489-7b6b0dd7b68a" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +77,7 @@
       <option name="presentableId" value="Default" />
       <updated>1782374113141</updated>
       <workItem from="1782374113428" duration="4902000" />
-      <workItem from="1782392260557" duration="2015000" />
+      <workItem from="1782392260557" duration="3743000" />
     </task>
     <servers />
   </component>

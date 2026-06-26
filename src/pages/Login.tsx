@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, Gamepad2, Github, Twitter } from 'lucide-react';
 import { useAuthStore } from '@/store/authStore';
-import { mockUsers } from '@/utils/mockData';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -20,28 +19,22 @@ export default function Login() {
     setError('');
     setIsLoading(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const result = await login(email, password);
 
-    const user = mockUsers.find((u) => u.email === email && u.password === password);
-    
-    if (user) {
-      login(user, 'mock-token-' + Date.now());
-      localStorage.setItem('devrealm_user', JSON.stringify(user));
-      localStorage.setItem('devrealm_token', 'mock-token-' + Date.now());
+    if (result.success) {
       navigate('/');
     } else {
-      const testUser = mockUsers.find((u) => u.email === email);
-      if (testUser) {
-        login(testUser, 'mock-token-' + Date.now());
-        localStorage.setItem('devrealm_user', JSON.stringify(testUser));
-        localStorage.setItem('devrealm_token', 'mock-token-' + Date.now());
-        navigate('/');
-      } else {
-        setError('邮箱或密码错误');
-      }
+      setError(result.error || '登录失败');
     }
 
     setIsLoading(false);
+  };
+
+  const handleDemoLogin = async (email: string, password: string) => {
+    setEmail(email);
+    setPassword(password);
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    await handleSubmit({ preventDefault: () => {} } as React.FormEvent);
   };
 
   return (
@@ -166,6 +159,36 @@ export default function Login() {
               )}
             </button>
           </form>
+
+          <div className="mt-6 space-y-3">
+            <p className="text-center text-sm text-gray-500">或者使用演示账号登录：</p>
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                onClick={() => handleDemoLogin('admin@devrealm.com', 'admin123')}
+                className="py-2.5 px-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-medium hover:bg-green-500/20 transition-colors flex items-center justify-center gap-2"
+              >
+                👑 管理员
+              </button>
+              <button
+                onClick={() => handleDemoLogin('user@devrealm.com', 'user123')}
+                className="py-2.5 px-4 rounded-xl bg-primary/10 border border-primary/20 text-primary text-sm font-medium hover:bg-primary/20 transition-colors flex items-center justify-center gap-2"
+              >
+                👤 普通用户
+              </button>
+              <button
+                onClick={() => handleDemoLogin('vip@devrealm.com', 'vip123')}
+                className="py-2.5 px-4 rounded-xl bg-accent/10 border border-accent/20 text-accent text-sm font-medium hover:bg-accent/20 transition-colors flex items-center justify-center gap-2"
+              >
+                ⭐ VIP会员
+              </button>
+              <button
+                onClick={() => handleDemoLogin('expert@devrealm.com', 'expert123')}
+                className="py-2.5 px-4 rounded-xl bg-secondary/10 border border-secondary/20 text-secondary text-sm font-medium hover:bg-secondary/20 transition-colors flex items-center justify-center gap-2"
+              >
+                🏆 专家
+              </button>
+            </div>
+          </div>
 
           <div className="mt-8">
             <div className="relative">

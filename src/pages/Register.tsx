@@ -5,7 +5,7 @@ import { useAuthStore } from '@/store/authStore';
 
 export default function Register() {
   const navigate = useNavigate();
-  const { login } = useAuthStore();
+  const { register } = useAuthStore();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -32,23 +32,14 @@ export default function Register() {
 
     setIsLoading(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const result = await register(email, username, password);
 
-    const newUser = {
-      id: 'new-' + Date.now(),
-      email,
-      username,
-      bio: '',
-      avatar_url: `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`,
-      role: 'user' as const,
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-      reputation: 0,
-      level: 1,
-    };
+    if (result.success) {
+      navigate('/');
+    } else {
+      setError(result.error || '注册失败');
+    }
 
-    login(newUser, 'mock-token-' + Date.now());
-    navigate('/');
     setIsLoading(false);
   };
 

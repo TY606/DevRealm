@@ -2,6 +2,7 @@ export interface User {
   id: string;
   email: string;
   username: string;
+  password: string;
   bio?: string;
   avatar_url?: string;
   role: 'user' | 'vip' | 'admin' | 'expert';
@@ -157,4 +158,4 @@ export interface Notification {
   created_at: string;
 }
 
-export type Role = 'guest' | 'user' | 'vip' | 'admin';
+export type Role = 'guest' | 'user' | 'vip' | 'admin' | 'expert';
