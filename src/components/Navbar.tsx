@@ -107,7 +107,9 @@ export default function Navbar() {
                 </button>
 
                 {isUserMenuOpen && (
-                  <div className="absolute right-0 top-full mt-2 w-56 glass-card border border-white/8 rounded-2xl overflow-hidden shadow-2xl animate-scale-in">
+                  <>
+                    <div className="fixed inset-0 z-40" onClick={() => setIsUserMenuOpen(false)} />
+                    <div className="absolute right-0 top-full mt-2 w-56 glass-card border border-white/8 rounded-2xl overflow-hidden shadow-2xl animate-scale-in z-50">
                     <div className="p-4 border-b border-white/5">
                       <div className="flex items-center gap-3">
                         <img
@@ -164,6 +166,7 @@ export default function Navbar() {
                       </button>
                     </div>
                   </div>
+                  </>
                 )}
               </div>
             ) : (
@@ -221,7 +224,35 @@ export default function Navbar() {
                   className="bg-transparent border-none outline-none text-sm text-white placeholder-gray-500 w-full"
                 />
               </div>
-              {!isAuthenticated && (
+              {isAuthenticated ? (
+                <div className="flex flex-col gap-2">
+                  <Link
+                    to="/profile"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
+                  >
+                    <User className="w-5 h-5" />
+                    <span className="font-medium">个人中心</span>
+                  </Link>
+                  {role === 'admin' && (
+                    <Link
+                      to="/admin"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
+                    >
+                      <Shield className="w-5 h-5" />
+                      <span className="font-medium">管理后台</span>
+                    </Link>
+                  )}
+                  <button
+                    onClick={() => { handleLogout(); setIsMenuOpen(false); }}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-colors"
+                  >
+                    <LogOut className="w-5 h-5" />
+                    <span className="font-medium">退出登录</span>
+                  </button>
+                </div>
+              ) : (
                 <div className="flex flex-col gap-2">
                   <Link
                     to="/login"

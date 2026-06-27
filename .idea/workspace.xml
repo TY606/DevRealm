@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10beb0f4-b4e6-4e74-8489-7b6b0dd7b68a" name="更改" comment="" />
+    <list default="true" id="10beb0f4-b4e6-4e74-8489-7b6b0dd7b68a" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/aiStore.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/forumStore.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/profileStore.ts" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,7 +53,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Batch.部署到GitHub">
     <configuration name="启动公网访问-多方案版" type="BatchConfigurationType" factoryName="Batch" temporary="true">
       <module name="DevRealm" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -55,8 +65,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="部署到GitHub" type="BatchConfigurationType" factoryName="Batch" temporary="true">
+      <module name="DevRealm" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="WORKING_DIRECTORY" value="F:\毕设\DevRealm" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="部署到GitHub.bat" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Batch.部署到GitHub" />
         <item itemvalue="Batch.启动公网访问-多方案版" />
       </list>
     </recent_temporary>
@@ -77,7 +99,7 @@
       <option name="presentableId" value="Default" />
       <updated>1782374113141</updated>
       <workItem from="1782374113428" duration="4902000" />
-      <workItem from="1782392260557" duration="3743000" />
+      <workItem from="1782392260557" duration="4487000" />
     </task>
     <servers />
   </component>

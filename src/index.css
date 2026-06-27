@@ -31,6 +31,279 @@
   }
 }
 
+@theme {
+  --color-admin-bg: #0A0F1A;
+  --color-admin-sidebar: #0E1420;
+  --color-admin-header: #111827;
+  --color-admin-dropdown: #1A2234;
+  --color-admin-border: rgba(255, 255, 255, 0.06);
+  --color-admin-primary: #6366F1;
+  --color-admin-secondary: #EC4899;
+  --color-admin-text-muted: #6B7280;
+  --color-admin-text-secondary: #9CA3AF;
+  --color-admin-hover: rgba(255, 255, 255, 0.06);
+  --color-admin-icon-bg: rgba(255, 255, 255, 0.04);
+  --color-admin-icon-hover: rgba(255, 255, 255, 0.08);
+  --color-admin-search: rgba(255, 255, 255, 0.03);
+  --color-admin-tooltip: #1F2937;
+  --color-admin-success: #10B981;
+  --color-admin-warning: #F59E0B;
+  --color-admin-danger: #EF4444;
+  
+  --height-admin-header: 68px;
+  
+  --font-display: 'Inter', system-ui, sans-serif;
+}
+
+@layer components {
+  .h-17 {
+    height: 68px;
+  }
+  
+  .pt-17 {
+    padding-top: 68px;
+  }
+  
+  .admin-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .admin-card:hover {
+    border-color: rgba(99, 102, 241, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+  
+  .admin-btn-primary {
+    background: linear-gradient(135deg, #6366F1 0%, #EC4899 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .admin-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+  }
+  
+  .admin-input {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: white;
+    font-size: 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .admin-input:focus {
+    border-color: rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    outline: none;
+  }
+  
+  .admin-select {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .admin-select:focus {
+    border-color: rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    outline: none;
+  }
+  
+  .admin-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  
+  .admin-badge-success {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10B981;
+  }
+  
+  .admin-badge-warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: #F59E0B;
+  }
+  
+  .admin-badge-danger {
+    background: rgba(239, 68, 68, 0.15);
+    color: #EF4444;
+  }
+  
+  .admin-badge-info {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3B82F6;
+  }
+  
+  .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .admin-table th {
+    text-align: left;
+    padding: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #9CA3AF;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  
+  .admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 14px;
+    color: #E5E7EB;
+  }
+  
+  .admin-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  
+  .admin-switch {
+    position: relative;
+    width: 56px;
+    height: 28px;
+    border-radius: 14px;
+    background: #374151;
+    cursor: pointer;
+    transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .admin-switch.active {
+    background: #6366F1;
+  }
+  
+  .admin-switch::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .admin-switch.active::after {
+    transform: translateX(28px);
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(107, 33, 168, 0.3), transparent);
+  }
+
+  .glass-button {
+    background: rgba(107, 33, 168, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(107, 33, 168, 0.25);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-button:hover {
+    background: rgba(107, 33, 168, 0.25);
+    box-shadow: 0 0 30px rgba(107, 33, 168, 0.2);
+    transform: translateY(-2px);
+    border-color: rgba(107, 33, 168, 0.4);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #8B5CF6 0%, #0EA5E9 50%, #22C55E 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: gradientShift 6s ease infinite;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #6B21A8 0%, #0EA5E9 100%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-primary:hover::before {
+    left: 100%;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px rgba(107, 33, 168, 0.4);
+  }
+
+  .input-field {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .input-field:focus {
+    border-color: rgba(139, 92, 246, 0.5);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .hover-lift {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  }
+}
+
 @layer components {
   .glass-card {
     background: rgba(255, 255, 255, 0.03);

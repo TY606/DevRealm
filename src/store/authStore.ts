@@ -3,11 +3,14 @@ import { persist, createJSONStorage } from '@zustand/middleware';
 import { User, Role } from '@/types';
 import { v4 as uuidv4 } from 'uuid';
 
+const STORAGE_VERSION = 'v2';
+
 interface AuthState {
   user: User | null;
   role: Role;
   token: string | null;
   isAuthenticated: boolean;
+  storageVersion: string;
   register: (email: string, username: string, password: string) => Promise<{ success: boolean; error?: string }>;
   login: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
   logout: () => void;
@@ -21,6 +24,7 @@ export const useAuthStore = create<AuthState>()(
       role: 'guest',
       token: null,
       isAuthenticated: false,
+      storageVersion: STORAGE_VERSION,
 
       register: async (email, username, password) => {
         const existingUsers = JSON.parse(localStorage.getItem('devrealm_users') || '[]');
@@ -56,6 +60,7 @@ export const useAuthStore = create<AuthState>()(
           role: newUser.role,
           token: 'token-' + Date.now(),
           isAuthenticated: true,
+          storageVersion: STORAGE_VERSION,
         });
         
         return { success: true };
@@ -78,6 +83,7 @@ export const useAuthStore = create<AuthState>()(
           role: user.role,
           token: 'token-' + Date.now(),
           isAuthenticated: true,
+          storageVersion: STORAGE_VERSION,
         });
         
         return { success: true };
@@ -89,6 +95,7 @@ export const useAuthStore = create<AuthState>()(
           role: 'guest',
           token: null,
           isAuthenticated: false,
+          storageVersion: STORAGE_VERSION,
         });
       },
 
@@ -111,6 +118,19 @@ export const useAuthStore = create<AuthState>()(
     {
       name: 'devrealm-auth',
       storage: createJSONStorage(() => localStorage),
+      version: 2,
+      migrate: (persistedState: unknown, version: number) => {
+        if (version < 2) {
+          return {
+            user: null,
+            role: 'guest' as Role,
+            token: null,
+            isAuthenticated: false,
+            storageVersion: STORAGE_VERSION,
+          };
+        }
+        return persistedState as AuthState;
+      },
     }
   )
 );
